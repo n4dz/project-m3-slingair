@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8000;
 const handleFlight = (req, res) => {
   const { flightNumber } = req.params;
   // get all flight numbers
-  const allFlights = Object.keys(flights);
+  const allFlights = Object.keys(flights); //return aray of the key of the object
   // is flightNumber in the array?
   //console.log("REAL FLIGHT: ", allFlights.includes(flightNumber));
   if (!allFlights.includes(flightNumber)) {
@@ -26,6 +26,7 @@ const handleFlight = (req, res) => {
       foundFlight = value;
     }
   }
+  /*or foundFlight = flights[flightNumber] */
 
   //response the flight informations
   res.status(200).json(foundFlight);
@@ -42,6 +43,7 @@ const handleAllFlights = (req, res) => {
 
 //returns an array of all users
 const handleAllUsers = (req, res) => {
+  //https://stackabuse.com/get-query-strings-and-parameters-in-express-js/
   let limit = req.query.limit;
   let start = req.query.start;
   //can't do the pagination??
