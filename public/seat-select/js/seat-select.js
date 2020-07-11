@@ -2,6 +2,20 @@ const flightInput = document.getElementById("flight");
 const seatsDiv = document.getElementById("seats-section");
 const confirmButton = document.getElementById("confirm-button");
 
+// // const { flights } = require("../../../test-data/flightSeating");
+// console.log(flights);
+
+// const allFlightsNumber = Object.keys(flights);
+// console.log(allFlightsNumber);
+// allFlightsNumber.forEach((element) => {
+//   let optionToAdd = document.createElement("option");
+//   optionToAdd.textContent = "hello";
+//   optionToAdd.value = "hello";
+//   flightInput.appendChild(optionToAdd);
+// });
+// //Creat option and adding it in flight (dropdown id)
+// //appendChild creat a child to insert element in parent (Child is the const)
+
 let selection = "";
 
 const renderSeats = (data) => {
@@ -79,7 +93,11 @@ const handleConfirmSeat = (event) => {
   fetch("/users", {
     method: "POST",
     body: JSON.stringify({
+      flightNum: document.getElementById("flight").value,
+      seat: document.getElementById("seat-number").innerHTML,
       givenName: document.getElementById("givenName").value,
+      surname: document.getElementById("surname").value,
+      email: document.getElementById("email").value,
     }),
     headers: {
       Accept: "application/json",

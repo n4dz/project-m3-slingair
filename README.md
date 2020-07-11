@@ -64,7 +64,7 @@ In order for your project to be considered `DONE` (passing grade), you should ha
 2. user can select an available seat.
 3. user can enter their personal information.
 4. user can view the flight confirmation page.
-5. given a `userId` (or other user info - up to you), user should be able to view their reservation.
+5. OPTIONAL given a `userId` (or other user info - up to you), user should be able to view their reservation.
 
 _Note that mutated test data will be preserved as long as your server is running. It stays in memory. The changes will only be reset when the server is restarted._
 

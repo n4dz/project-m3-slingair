@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const { uuid } = require("uuidv4");
 const { flights } = require("./test-data/flightSeating");
 const users = require("./test-data/reservations");
 
@@ -52,6 +53,24 @@ const handleAllUsers = (req, res) => {
   res.status(200).json(users);
 };
 
+const handleCreateUser = (req, res) => {
+  const bodyRequestElements = req.body;
+  const userUuid = uuid();
+
+  let userDataToAdd = {
+    id: userUuid,
+    flight: bodyRequestElements.flightNum,
+    seat: bodyRequestElements.seat,
+    givenName: bodyRequestElements.givenName,
+    surname: bodyRequestElements.surname,
+    email: bodyRequestElements.email,
+  };
+
+  users.reservations.push(userDataToAdd);
+
+  res.status(200).json(userDataToAdd);
+};
+
 express()
   .use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -71,5 +90,6 @@ express()
   //returns an array of flight numbers
   .get("/flights", handleAllFlights)
   .get("/users", handleAllUsers)
+  .post("/users", handleCreateUser)
   .use((req, res) => res.send("Not Found"))
   .listen(PORT, () => console.log(`Listening on port ${PORT}`));

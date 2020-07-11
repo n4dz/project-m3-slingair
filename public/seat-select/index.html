@@ -13,7 +13,12 @@
             </div>
             <div class="flight-select">
                 <label for="flight">Flight Number :</label>
-                <input name="flight" id="flight" class="flight" type="text" placeholder="flight #" />
+                <select name="flight" id="flight"class="flight" type="text" placeholder="flight #" >
+                    <option disabled selected value> -- select a flight -- </option>
+                    <option value="SA123">SA123</option>
+                    <option value="SA231">SA231</option>
+                  </select>
+                <!-- <input name="flight" id="flight" class="flight" type="text" placeholder="flight #" /> -->
             </div>
             <div class="form-container">
                 <h2>Select your seat and Provide your information!</h2>
@@ -34,7 +39,7 @@
                             <label for="email">Email</label>
                             <input id="email" type="email" name="email" placeholder="Your email" required />
                         </div>
-                        <button class='button confirm' id='confirm-button'>
+                        <button type="submit" class='button confirm' id='confirm-button'>
                             <div class="lds-dual-ring"></div>
                             Confirm<span id="seat-number"></span>
                         </button>
@@ -42,6 +47,7 @@
                 </form>
             </div>
         </div>
+
         <script src="./js/seat-select.js"></script>
     </body>
 </html>
