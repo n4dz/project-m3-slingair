@@ -103,6 +103,13 @@ const handleConfirmSeat = (event) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
+  }).then((res) => {
+    const { status } = res;
+    if (status === 200) {
+      window.location.href = "/seat-select/confirmed.html";
+    } else {
+      window.location.href = "/";
+    }
   });
 };
 
